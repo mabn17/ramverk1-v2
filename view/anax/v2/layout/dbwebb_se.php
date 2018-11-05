@@ -54,7 +54,6 @@ if ($flashMessage) {
 // Get current route to make as body class
 $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
 
-
 ?><!doctype html>
 <html <?= classList($htmlClass) ?> lang="<?= $lang ?>">
 <head>

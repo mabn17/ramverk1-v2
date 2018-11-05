@@ -1,3 +1,3 @@
-#### Footer col 1
+#### <i class="fas fa-address-card"></i> Om mig
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Mitt namn är Martin och jag är en 23 årig kille som studerar på BTH. [Läs mer]()

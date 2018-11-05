@@ -1,3 +1,3 @@
-#### Footer col 3
+#### <i class="fas fa-info-circle"></i> Om webbsidan
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Denna webbsidan är min me-sida i kursen Ramverk1. [Läs mer](om) 

@@ -19,10 +19,6 @@ views:
 Om
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/om.md`.
+Detta är min me-sida i kursen **Webbaserade ramverk 1**, a.k.a. *ramverk1* som, lär ut programmering och objektorienterade kodstrukturer med designmönster & modultänkande kring återanvändbara moduler i webbaserade ramverk samt tekniker för automatiserad testning, byggsystem och flöde för kontinuerlig integration av programvaran.
 
-Skriv några kloka ord om kursen?
-
-Lägg till en representativ bild för kursen, enligt ditt egna val.
-
-[FIGURE src=image/car.png?w=300 caption="En fin bil som demobild."]
+[FIGURE src=image/leaf.jpg?w=150 caption="" class="right"]
