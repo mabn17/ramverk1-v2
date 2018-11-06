@@ -11,7 +11,7 @@ namespace Anax\View;
 
 $items = $navbarConfig["items"] ?? [];
 
-$classes = "navbar " . ($navbarConfig["class"] ?? null);
+$classes = "navbar justify-content-center " . ($navbarConfig["class"] ?? null);
 
 
 

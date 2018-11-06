@@ -66,6 +66,7 @@ $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
     <link rel="icon" href="<?= asset($favicon) ?>">
     <?php endif; ?>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <?php if (isset($stylesheets)) : ?>
         <?php foreach ($stylesheets as $stylesheet) : ?>
             <link rel="stylesheet" type="text/css" href="<?= asset($stylesheet) ?>">
@@ -87,7 +88,7 @@ $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
 
 <!-- siteheader with optional columns -->
 <?php if (regionHasContent("header") || regionHasContent("header-col-1")) : ?>
-<div class="outer-wrap outer-wrap-header">
+<div class="outer-wrap outer-wrap-header fixed-top b-g-c">
     <div class="inner-wrap inner-wrap-header">
         <div class="row">
             <header class="region-header" role="banner">
@@ -130,8 +131,8 @@ $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
 <?php if (regionHasContent("navbar")) : ?>
 <div class="outer-wrap outer-wrap-navbar">
     <div class="inner-wrap inner-wrap-navbar">
-        <div class="row">
-            <nav class="region-navbar" role="navigation">
+        <div class="row d-flex">
+            <nav class="region-navbar justify-content-around" role="navigation">
                 <?php renderRegion("navbar") ?>
             </nav>
         </div>
@@ -141,19 +142,7 @@ $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
 
 
 
-<!-- flash -->
-<?php if (regionHasContent("flash")) : ?>
-<div class="outer-wrap outer-wrap-flash">
-    <div class="inner-wrap inner-wrap-flash">
-        <div class="row">
-            <div class="region-flash">
-                <?php renderRegion("flash") ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php endif; ?>
-
+<div class="py-4"></div>
 
 
 <!-- breadcrumb -->
@@ -202,7 +191,7 @@ $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
 
 
 <!-- main -->
-<div class="outer-wrap outer-wrap-main">
+<div class="outer-wrap outer-wrap-main py-4">
     <div class="inner-wrap inner-wrap-main">
         <div class="row">
 

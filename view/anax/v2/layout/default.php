@@ -3,6 +3,7 @@
 namespace Anax\View;
 
 use Anax\StyleChooser\StyleChooserController;
+
 /**
  * A layout rendering views in defined regions.
  */
