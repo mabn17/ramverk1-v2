@@ -6,7 +6,7 @@ return [
     "routes" => [
         [
             "info" => "Flat file content controller.",
-            "mount" => "ip",
+            "mount" => "validate",
             "handler" => "\Anax\Controller\IpController",
         ],
         [

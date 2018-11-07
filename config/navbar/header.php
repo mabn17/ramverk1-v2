@@ -50,13 +50,13 @@ return [
         ],
         [
             "text" => "Validera IP",
-            "url" => "ip",
+            "url" => "validate",
             "title" => "En kontroller för att validera ip-adresser",
             "submenu" => [
                 "items" => [
                     [
                         "text" => "Form Valedering",
-                        "url" => "ip",
+                        "url" => "validate",
                         "title" => "En kontroller för att validera ip-adresser",
                     ],
                     [

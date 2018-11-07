@@ -33,4 +33,15 @@ $myIp = getMyIp();
     <p>Exempel för att kolla ip adress - ip-json/map?ip={ip adress}</p>
     <p>Testa med <a href="<?= url("ip-json/map?ip=$myIp")?>">din egen</a> ip adress <br>Eller använd ett <a href="<?= url("ip-json/map?ip=83.252.52.131")?>">färdigt</a> exempel</p>
     För mer info in på <a href="<?= url("ip-json/look") ?>">Restful APIets</a> informations-sida.
+    
+    <p>Eller använd Post:</p>
+    
+    <form class="form-inline w-100" method="post" action="<?= url("ip-json/map") ?>">
+    <div class="form-group w-100">
+        <label class="sr-only" for="ip">ip address:</label>
+        <input type="ip" class="form-control w-100" name="ip" id="ip" value="<?= $myIp ?>">
+    </div><br>
+    <button type="submit" name="kmom01" class="btn btn-default row mt-2 w-50">Kolla IP - Kmom01</button>
+    <button type="submit" name="kmom02" class="btn btn-default row mt-2 w-50 btn-secondary">Kolla IP - Kmom02</button>
+    </form>
 </div>
