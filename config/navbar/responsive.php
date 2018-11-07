@@ -49,5 +49,24 @@ return [
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",
         ],
+        [
+            "text" => "Validera IP",
+            "url" => "ip",
+            "title" => "En kontroller för att validera ip-adresser",
+            "submenu" => [
+                "items" => [
+                    [
+                        "text" => "Form Valedering",
+                        "url" => "ip",
+                        "title" => "En kontroller för att validera ip-adresser",
+                    ],
+                    [
+                        "text" => "Json Valedering",
+                        "url" => "ip-json",
+                        "title" => "En kontroller i JSON för att validera ip-adresser",
+                    ],
+                ],
+            ],
+        ],
     ],
 ];
