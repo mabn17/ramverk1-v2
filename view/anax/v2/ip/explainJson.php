@@ -34,7 +34,8 @@ $myIp = getMyIp();
     <p>Testa med <a href="<?= url("ip-json/map?ip=$myIp")?>">din egen</a> ip adress <br>Eller använd ett <a href="<?= url("ip-json/map?ip=83.252.52.131")?>">färdigt</a> exempel</p>
     För mer info in på <a href="<?= url("ip-json/look") ?>">Restful APIets</a> informations-sida.
     
-    <p>Eller använd Post:</p>
+    <hr>
+    <p><b>Eller använd Post</b>:</p>
     
     <form class="form-inline w-100" method="post" action="<?= url("ip-json/map") ?>">
     <div class="form-group w-100">

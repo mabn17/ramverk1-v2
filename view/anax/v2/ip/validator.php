@@ -35,7 +35,7 @@ $myIp = getMyIp();
 </form>
 <p>Exempel på ipv6: 2001:0db8:85a3:0000:0000:8a2e:0370:7334<br>Exempel på ipv4 127.0.0.1</p>
 <p><?= $ip ?></p>
-<?php if ($api_result !== "") { ?>
+<?php if ($apiRes !== "") { ?>
 <link rel="stylesheet" href="../view/anax/v2/ip/leaflet.css">
 <table class="table">
   <thead>
@@ -51,13 +51,13 @@ $myIp = getMyIp();
   </thead>
   <tbody>
     <tr>
-      <td><?= $api_result["country_name"] ?></td>
-      <td><?= $api_result["location"]["capital"] ?></td>
-      <td><?= $api_result["city"] ?></td>      
-      <td><?= $api_result["ip"] ?></td>
-      <td><?= $api_result["type"] ?></td>
-      <td id="lat"><?= $api_result["latitude"] ?></td>
-      <td id="lng"><?= $api_result["longitude"] ?></td>
+      <td><?= $apiRes["country_name"] ?></td>
+      <td><?= $apiRes["location"]["capital"] ?></td>
+      <td><?= $apiRes["city"] ?></td>      
+      <td><?= $apiRes["ip"] ?></td>
+      <td><?= $apiRes["type"] ?></td>
+      <td id="lat"><?= $apiRes["latitude"] ?></td>
+      <td id="lng"><?= $apiRes["longitude"] ?></td>
     </tr>
   </tbody>
 </table>

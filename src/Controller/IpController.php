@@ -58,20 +58,20 @@ class IpController implements ContainerInjectableInterface
     public function indexAction()
     {
 
-        $path = $this->di->get("router")->getMatchedPath();
+        // $path = $this->di->get("router")->getMatchedPath();
         $page = $this->di->get("page");
         $session = $this->di->get("session");
 
-        $ip = ($session->has('ip')) ? $session->get("ip"): "";
+        $ipB = ($session->has('ip')) ? $session->get("ip"): "";
         $ipA = ($session->has('ip')) ? $session->get("ipA"): "";
-        $api_result = ($session->has('api_result')) ? $session->get("api_result") : "";
+        $apiRes = ($session->has('apiRes')) ? $session->get("apiRes") : "";
 
         $page->add(
             "anax/v2/ip/validator",
             [
-                "ip" => $ip,
+                "ip" => $ipB,
                 "ipA" => $ipA,
-                "api_result" => $api_result,
+                "apiRes" => $apiRes,
             ]
         );
 
@@ -86,53 +86,53 @@ class IpController implements ContainerInjectableInterface
      *
      * @return string
      */
-    public function updateActionPost() : string
+    public function updateActionPost() : object
     {
         $response = $this->di->get("response");
         $request = $this->di->get("request");
         $session = $this->di->get("session");
         $ipA = $request->getPost('ip');
-        $ip = "null";
-        $access_key = "59f40c392b861e29e674546a49e37b53";
-        $api_result = "";
+        $ipB = "null";
+        $accessKey = "59f40c392b861e29e674546a49e37b53";
+        $apiRes = "";
 
         if ($request->getPost('kmom02') !== null) {
             if (filter_var($ipA, FILTER_VALIDATE_IP)) {
                 if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-                    $ip = "<span class='text-success'> $ipA is a valid IPv6 adress.</span>";
+                    $ipB = "<span class='text-success'> $ipA is a valid IPv6 adress.</span>";
 
-                    $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$access_key.'');
+                    $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $json = curl_exec($ch);
                     curl_close($ch);
-                    $api_result = json_decode($json, true);
+                    $apiRes = json_decode($json, true);
                 } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                    $ip = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
+                    $ipB = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
 
-                    $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$access_key.'');
+                    $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $json = curl_exec($ch);
                     curl_close($ch);
-                    $api_result = json_decode($json, true);
+                    $apiRes = json_decode($json, true);
                 }
             } else {
-                $ip = "<span class='text-danger'> $ipA is not a valid IP.</span>";
+                $ipB = "<span class='text-danger'> $ipA is not a valid IP.</span>";
             }
         } elseif ($request->getPost('kmom01') !== null) {
             if (filter_var($ipA, FILTER_VALIDATE_IP)) {
                 if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-                    $ip = "<span class='text-success'> $ipA is a valid IPv6 adress.</span>";
+                    $ipB = "<span class='text-success'> $ipA is a valid IPv6 adress.</span>";
                 } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                    $ip = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
+                    $ipB = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
                 }
             } else {
-                $ip = "<span class='text-danger'> $ipA is not a valid IP.</span>";
+                $ipB = "<span class='text-danger'> $ipA is not a valid IP.</span>";
             }
         }
 
-        $session->set("ip", $ip);
+        $session->set("ip", $ipB);
         $session->set("ipA", $ipA);
-        $session->set("api_result", $api_result);
+        $session->set("apiRes", $apiRes);
 
         return $response->redirect("validate");
     }

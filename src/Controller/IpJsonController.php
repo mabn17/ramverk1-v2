@@ -57,16 +57,16 @@ class IpJsonController implements ContainerInjectableInterface
     public function indexAction()
     {
 
-        $path = $this->di->get("router")->getMatchedPath();
+        // $path = $this->di->get("router")->getMatchedPath();
         $page = $this->di->get("page");
         $session = $this->di->get("session");
 
-        $ip = ($session->has('ip')) ? $session->get("ip"): "Nothing is set";
+        $ipB = ($session->has('ip')) ? $session->get("ip"): "Nothing is set";
 
         $page->add(
             "anax/v2/ip/explainJson",
             [
-                "ip" => $ip,
+                "ip" => $ipB,
             ]
         );
 
@@ -78,7 +78,7 @@ class IpJsonController implements ContainerInjectableInterface
     public function lookAction() : array
     {
         $json = [
-            "Kmom01" => "Lägg in din valda ip adress efter ip-json/check/{ip adress}",
+            "Kmom01" => "Lägg in din valda ip adress efter validate/check?ip={ip adress}",
             "Kmom02" => "Lägg in din valda ip adress efter ip-json/map?ip={ip adress}",
         ];
         return [$json];
@@ -88,20 +88,20 @@ class IpJsonController implements ContainerInjectableInterface
     {
         $request = $this->di->get("request");
         $ipA = $request->getGet('ip');
-        $ip = "";
+        $ipB = "";
 
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {
             if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-                $ip = "$ipA is a valid IPv6 adress.";
+                $ipB = "$ipA is a valid IPv6 adress.";
             } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                $ip = "$ipA is a valid IPv4 adress.";
+                $ipB = "$ipA is a valid IPv4 adress.";
             }
         } else {
-            $ip = "$ipA is not a valid IP.";
+            $ipB = "$ipA is not a valid IP.";
         }
 
         $json = [
-            "message" => "$ip",
+            "message" => "$ipB",
         ];
         return [$json];
     }
@@ -110,76 +110,76 @@ class IpJsonController implements ContainerInjectableInterface
     {
         $request = $this->di->get("request");
         $ipA = $request->getGet('ip');
-        $access_key = "59f40c392b861e29e674546a49e37b53";
-        $api_result = [];
+        $accessKey = "59f40c392b861e29e674546a49e37b53";
+        $apiRes = [];
         $json = [];
 
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {
             if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-                $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$access_key.'');
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $json = curl_exec($ch);
-                curl_close($ch);
-                $api_result = json_decode($json, true);
+                $chR = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
+                curl_setopt($chR, CURLOPT_RETURNTRANSFER, true);
+                $json = curl_exec($chR);
+                curl_close($chR);
+                $apiRes = json_decode($json, true);
             } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                $ip = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
+                // $ipB = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
 
-                $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$access_key.'');
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $json = curl_exec($ch);
-                curl_close($ch);
-                $api_result = json_decode($json, true);
+                $chR = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
+                curl_setopt($chR, CURLOPT_RETURNTRANSFER, true);
+                $json = curl_exec($chR);
+                curl_close($chR);
+                $apiRes = json_decode($json, true);
             }
-            $api_result["Map_Link"] = "https://www.openstreetmap.org/#map=13/{$api_result['latitude']}/{$api_result['longitude']}";
+            $apiRes["Map_Link"] = "https://www.openstreetmap.org/#map=13/{$apiRes['latitude']}/{$apiRes['longitude']}";
         }
 
-        return [$api_result];
+        return [$apiRes];
     }
 
     public function mapActionPost() : array
     {
         $request = $this->di->get("request");
         $ipA = $request->getPost('ip');
-        $access_key = "59f40c392b861e29e674546a49e37b53";
-        $api_result = [];
+        $accessKey = "59f40c392b861e29e674546a49e37b53";
+        $apiRes = [];
         $json = [];
 
         if ($request->getPost('kmom01') !== null) {
             if (filter_var($ipA, FILTER_VALIDATE_IP)) {
                 if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-                    $ip = "$ipA is a valid IPv6 adress.";
+                    $ipB = "$ipA is a valid IPv6 adress.";
                 } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                    $ip = "$ipA is a valid IPv4 adress.";
+                    $ipB = "$ipA is a valid IPv4 adress.";
                 }
             } else {
-                $ip = "$ipA is not a valid IP.";
+                $ipB = "$ipA is not a valid IP.";
             }
     
             $json = [
-                "message" => "$ip",
+                "message" => "$ipB",
             ];
             return [$json];
         }
 
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {
             if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-                $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$access_key.'');
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $json = curl_exec($ch);
-                curl_close($ch);
-                $api_result = json_decode($json, true);
+                $chR = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
+                curl_setopt($chR, CURLOPT_RETURNTRANSFER, true);
+                $json = curl_exec($chR);
+                curl_close($chR);
+                $apiRes = json_decode($json, true);
             } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-                $ip = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
+                $ipB = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
 
-                $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$access_key.'');
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $json = curl_exec($ch);
-                curl_close($ch);
-                $api_result = json_decode($json, true);
+                $chR = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
+                curl_setopt($chR, CURLOPT_RETURNTRANSFER, true);
+                $json = curl_exec($chR);
+                curl_close($chR);
+                $apiRes = json_decode($json, true);
             }
-            $api_result["Map_Link"] = "https://www.openstreetmap.org/#map=13/{$api_result['latitude']}/{$api_result['longitude']}";
+            $apiRes["Map_Link"] = "https://www.openstreetmap.org/#map=13/{$apiRes['latitude']}/{$apiRes['longitude']}";
         }
 
-        return [$api_result];
+        return [$apiRes];
     }
 }
