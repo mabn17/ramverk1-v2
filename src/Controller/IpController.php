@@ -101,18 +101,18 @@ class IpController implements ContainerInjectableInterface
                 if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
                     $ipB = "<span class='text-success'> $ipA is a valid IPv6 adress.</span>";
 
-                    $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    $json = curl_exec($ch);
-                    curl_close($ch);
+                    $chA = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
+                    curl_setopt($chA, CURLOPT_RETURNTRANSFER, true);
+                    $json = curl_exec($chA);
+                    curl_close($chA);
                     $apiRes = json_decode($json, true);
                 } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
                     $ipB = "<span class='text-success'> $ipA is a valid IPv4 adress.</span>";
 
-                    $ch = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    $json = curl_exec($ch);
-                    curl_close($ch);
+                    $chA = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
+                    curl_setopt($chA, CURLOPT_RETURNTRANSFER, true);
+                    $json = curl_exec($chA);
+                    curl_close($chA);
                     $apiRes = json_decode($json, true);
                 }
             } else {
