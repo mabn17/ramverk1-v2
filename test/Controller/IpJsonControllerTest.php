@@ -20,12 +20,11 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
-        $controller->initialize();
 
         $this->assertInstanceOf("\Anax\Controller\IpJsonController", $controller);
-        $this->assertEquals($controller->initialize(), null);
 
         $res = $controller->indexAction();
+        $this->assertEquals(gettype($res), 'object');
     }
 
     /**
@@ -56,6 +55,18 @@ class IpJsonControllerTest extends TestCase
         $this->assertEquals("array", gettype($res));
     }
 
+    public function testCheckActionPost()
+    {
+        $di = new DIFactoryConfig();
+        $di->loadServices(ANAX_INSTALL_PATH . '/config/di');
+
+        $controller = new IpJsonController();
+        $controller->setDI($di);
+        $res = $controller->checkActionPost();
+
+        $this->assertEquals("array", gettype($res));
+    }
+
     public function testMapActionGet()
     {
         $di = new DIFactoryConfig();
@@ -79,4 +90,27 @@ class IpJsonControllerTest extends TestCase
 
         $this->assertEquals("array", gettype($res));
     }
+
+    /* public function testSubModel()
+    {
+        $model = new \Anax\IpValidator\JsonValidatorModel;
+        $adrs = "127.0.0.1";
+        $adrsE = "$adrs is a valid IPv4 adress.";
+        $adrsT = "2001:0db8:85a3:0000:0000:8a2e:0370:7334";
+        $adrsTE = "$adrsT is a valid IPv6 adress.";
+        $iFourMsg = $model->validateKmomOne($adrs);
+        $iSixMsg = $model->validateKmomOne($adrsT);
+
+        $this->assertEquals($iFourMsg, $adrsE);
+        $this->assertEquals($iSixMsg, $adrsTE);
+
+        $iFourMsg = $model->getIpVFourKmomOne($adrs);
+        $iSixMsg = $model->getIpVSixKmomOne($adrsT);
+
+        $this->assertEquals($iFourMsg, $adrsE);
+        $this->assertEquals($iSixMsg, $adrsTE);
+
+        $jsTwo = $model->validateKmomTwo($adrs);
+        $this->assertEquals(gettype($jsTwo), "array");
+    } */
 }

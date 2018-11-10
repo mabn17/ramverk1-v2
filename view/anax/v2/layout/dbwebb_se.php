@@ -147,7 +147,7 @@ $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
 
 <!-- breadcrumb -->
 <?php if (regionHasContent("breadcrumb")) : ?>
-<div class="outer-wrap outer-wrap-breadcrumb">
+<div class="outer-wrap outer-wrap-breadcrumb py-2">
     <div class="inner-wrap inner-wrap-breadcrumb">
         <div class="row">
             <div class="region-breadcrumb">
