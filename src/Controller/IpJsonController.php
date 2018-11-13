@@ -54,6 +54,9 @@ class IpJsonController implements ContainerInjectableInterface
         ]);
     }
 
+    /**
+     * Small sample of how to use get /look
+     */
     public function lookAction() : array
     {
         $json = [
@@ -63,6 +66,9 @@ class IpJsonController implements ContainerInjectableInterface
         return [$json];
     }
 
+    /**
+     * Displays a JSON formated aswer for kmom01 (GET) /check
+     */
     public function checkActionGet() : array
     {
         $request = $this->di->get("request");
@@ -75,6 +81,9 @@ class IpJsonController implements ContainerInjectableInterface
         return [$json];
     }
 
+    /**
+     * Displays a JSON formated aswer for kmom01 (POST) /check
+     */
     public function checkActionPost() : array
     {
         $request = $this->di->get("request");
@@ -87,6 +96,9 @@ class IpJsonController implements ContainerInjectableInterface
         return [$json];
     }
 
+    /**
+     * Displays a JSON formated aswer for kmom02 (GET) /map
+     */
     public function mapActionGet() : array
     {
         $request = $this->di->get("request");
@@ -96,18 +108,20 @@ class IpJsonController implements ContainerInjectableInterface
         return [$apiRes];
     }
 
+    /**
+     * Displays a JSON formated aswer for kmom02 (POST) /map
+     * Also hande one question from the test route (TODO: move this check)
+     */
     public function mapActionPost() : array
     {
         $request = $this->di->get("request");
         $ipA = $request->getPost('ip') ?? "";
-        $kmomOne = $request->getPost('kmom01') ?? false;
+        $kmomOne = $request->getPost('kmom01') ?? null;
         $apiRes = [];
         $json = [];
 
-        $apiRes = $this->model->validateKmomTwo($ipA);
-
-        // Only for test route
-        if ($kmomOne) {
+        // Only for test route (Will change it soon)
+        if ($kmomOne !== null) {
             $ipB = $this->model->validateKmomOne($ipA);
             $json = [
                 "message" => "$ipB",
@@ -115,6 +129,7 @@ class IpJsonController implements ContainerInjectableInterface
             return [$json];
         }
 
+        $apiRes = $this->model->validateKmomTwo($ipA);
         return [$apiRes];
     }
 }

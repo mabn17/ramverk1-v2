@@ -55,8 +55,9 @@ $myIp = getMyIp();
     "message": "127.0.0.1 is a valid IPv4 adress."
 }</pre>
     <h4>POST</h4>
+    <p><small>Skicka frågorna i <b>Body</b> och försäkra dig om att <b>x-www-form-urlencoded</b> är satt</small></p>
     <pre class="hljs text-left"><span class="hljs-keyword">POST</span> /ip-json/check<br><b>POST</b> /ip-json/check
-          <span class="hljs-comment">127.0.0.1</span></pre>
+    <span class="hljs-comment">{ip: 127.0.0.1}</span></pre>
     <i>Resultat</i>
     <pre class="hljs text-left">{
     "message": "127.0.0.1 is a valid IPv4 adress."
@@ -97,8 +98,9 @@ $myIp = getMyIp();
     "Map_Link": "https://www.openstreetmap.org/#map=13/56.1616/15.5866"
 }</pre>
     <h4>POST</h4>
+    <p><small>Skicka frågorna i <b>Body</b> och försäkra dig om att <b>x-www-form-urlencoded</b> är satt</small></p>
     <pre class="hljs text-left"><span class="hljs-keyword">POST</span> /ip-json/map<br><b>POST</b> /ip-json/map
-    <span class="hljs-comment">83.252.52.131</span></pre>
+    <span class="hljs-comment">{ip: 83.252.52.131}</span></pre>
     <i>Resultat</i>
     <pre class="hljs text-left">{
     "ip": "83.252.52.131",

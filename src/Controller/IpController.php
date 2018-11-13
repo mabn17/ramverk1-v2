@@ -57,8 +57,8 @@ class IpController implements ContainerInjectableInterface
     }
 
     /**
-     * This sample method action it the handler for route:
-     * POST mountpoint/update
+     * Displays a view that shows the response for kmom01 and kmom02
+     * /update (TODO: change (BAD route name))
      *
      * @return string
      */
