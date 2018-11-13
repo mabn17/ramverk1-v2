@@ -22,7 +22,7 @@ class IpController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-    public function __construct()
+    public function initialize()
     {
         $this->model = new \Anax\IpValidator\ValidateModel;
     }
@@ -37,7 +37,6 @@ class IpController implements ContainerInjectableInterface
     {
         $page = $this->di->get("page");
         $session = $this->di->get("session");
-
         $ipB = ($session->has('ip')) ? $session->get("ip"): "";
         $ipA = ($session->has('ip')) ? $session->get("ipA"): "";
         $apiRes = ($session->has('apiRes')) ? $session->get("apiRes") : "";

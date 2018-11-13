@@ -1,22 +1,16 @@
 <?php
-
 namespace Anax\View;
-
 use Anax\StyleChooser\StyleChooserController;
-
 /**
  * A layout rendering views in defined regions.
  */
-
 // Show incoming variables and view helper functions
 //echo showEnvironment(get_defined_vars(), get_defined_functions());
-
 $htmlClass = $htmlClass ?? [];
 $lang = $lang ?? "sv";
 $charset = $charset ?? "utf-8";
 $title = ($title ?? "No title") . ($baseTitle ?? " | No base title defined");
 $bodyClass = $bodyClass ?? null;
-
 // Set active stylesheet
 $request = $di->get("request");
 $session = $di->get("session");
@@ -24,14 +18,12 @@ if ($request->getGet("style")) {
     $session->set("redirect", currentUrl());
     redirect("style/update/" . rawurlencode($_GET["style"]));
 }
-
 // Get the active stylesheet, if any.
 $activeStyle = $session->get(StyleChooserController::getSessionKey(), null);
 if ($activeStyle) {
     $stylesheets = [];
     $stylesheets[] = $activeStyle;
 }
-
 // Get hgrid & vgrid
 if ($request->hasGet("hgrid")) {
     $htmlClass[] = "hgrid";
@@ -39,21 +31,17 @@ if ($request->hasGet("hgrid")) {
 if ($request->hasGet("vgrid")) {
     $htmlClass[] = "vgrid";
 }
-
 // Show regions
 if ($request->hasGet("regions")) {
     $htmlClass[] = "regions";
 }
-
 // Get flash message if any and add to region flash-message
 $flashMessage = $session->getOnce("flashmessage");
 if ($flashMessage) {
     $di->get("view")->add(__DIR__ . "/../flashmessage/default", ["message" => $flashMessage], "flash-message");
 }
-
 // Get current route to make as body class
 $route = "route-" . str_replace("/", "-", $di->get("request")->getRoute());
-
 ?><!doctype html>
 <html <?= classList($htmlClass) ?> lang="<?= $lang ?>">
 <head>

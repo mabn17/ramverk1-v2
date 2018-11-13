@@ -69,7 +69,8 @@ class ValidateModel
      */
     public function getJson(string $ipA) : array
     {
-        $accessKey = "59f40c392b861e29e674546a49e37b53";
+        $filename = __DIR__ . "/key.txt";
+        $accessKey = file($filename)[0];
 
         $chA = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
         curl_setopt($chA, CURLOPT_RETURNTRANSFER, true);

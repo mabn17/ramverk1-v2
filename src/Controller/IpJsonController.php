@@ -22,7 +22,7 @@ class IpJsonController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-    public function __construct()
+    public function initialize()
     {
         $this->model = new \Anax\IpValidator\JsonValidatorModel;
     }
