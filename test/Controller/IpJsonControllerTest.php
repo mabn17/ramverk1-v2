@@ -20,6 +20,7 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
+        $controller->initialize();
 
         $this->assertInstanceOf("\Anax\Controller\IpJsonController", $controller);
 
@@ -37,6 +38,8 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
+        $controller->initialize();
+
         $res = $controller->lookAction();
 
         $this->assertEquals($res[0]["Kmom01"], "Lägg in din valda ip adress efter validate/check?ip={ip adress}");
@@ -50,6 +53,8 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
+        $controller->initialize();
+
         $res = $controller->checkActionGet();
 
         $this->assertEquals("array", gettype($res));
@@ -62,6 +67,8 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
+        $controller->initialize();
+
         $res = $controller->checkActionPost();
 
         $this->assertEquals("array", gettype($res));
@@ -74,6 +81,8 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
+        $controller->initialize();
+
         $res = $controller->mapActionGet();
 
         $this->assertEquals("array", gettype($res));
@@ -86,12 +95,14 @@ class IpJsonControllerTest extends TestCase
 
         $controller = new IpJsonController();
         $controller->setDI($di);
+        $controller->initialize();
+
         $res = $controller->mapActionPost();
 
         $this->assertEquals("array", gettype($res));
     }
 
-    /* public function testSubModel()
+    public function testSubModel()
     {
         $model = new \Anax\IpValidator\JsonValidatorModel;
         $adrs = "127.0.0.1";
@@ -112,5 +123,5 @@ class IpJsonControllerTest extends TestCase
 
         $jsTwo = $model->validateKmomTwo($adrs);
         $this->assertEquals(gettype($jsTwo), "array");
-    } */
+    }
 }

@@ -20,6 +20,7 @@ class IpControllerTest extends TestCase
 
         $controller = new IpController();
         $controller->setDI($di);
+        $controller->initialize();
 
         $this->assertInstanceOf("\Anax\Controller\IpController", $controller);
 
@@ -33,13 +34,14 @@ class IpControllerTest extends TestCase
         $di->loadServices(ANAX_INSTALL_PATH . '/config/di');
         $controller = new IpController();
         $controller->setDI($di);
+        $controller->initialize();
 
         $responseR = $controller->updateActionPost();
 
         $this->assertEquals($di->get("response")->redirect("validate"), $responseR);
     }
 
-    /* public function testSubModel()
+    public function testSubModel()
     {
         $model = new \Anax\IpValidator\ValidateModel;
         $adrs = "127.0.0.1";
@@ -70,5 +72,5 @@ class IpControllerTest extends TestCase
         $this->assertEquals($model->checkPost(" ", null, $adrs), $model->validateKmomOne($adrs));
 
         $this->assertEquals(gettype($model->validateKmomTwo($adrsT)), "array");
-    } */
+    }
 }
