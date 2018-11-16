@@ -1,6 +1,6 @@
 <?php
 /**
- * Flat file controller for reading markdown files from content/.
+ * Handles kmom01 and kmom02.
  */
 return [
     "routes" => [

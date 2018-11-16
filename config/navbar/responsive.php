@@ -73,5 +73,10 @@ return [
                 ],
             ],
         ],
+        [
+            "text" => "Väder Koll",
+            "url" => "vader",
+            "title" => "Väder applikation",
+        ],
     ],
 ];

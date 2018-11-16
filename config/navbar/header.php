@@ -48,11 +48,11 @@ return [
             "url" => "style",
             "title" => "Välj stylesheet.",
         ],
-        [
+        /* [
             "text" => "Verktyg",
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",
-        ],
+        ], */
         [
             "text" => "Validera IP",
             "url" => "validate",
@@ -71,6 +71,11 @@ return [
                     ],
                 ],
             ],
+        ],
+        [
+            "text" => "Väder Koll",
+            "url" => "vader",
+            "title" => "Väder applikation",
         ],
     ],
 ];

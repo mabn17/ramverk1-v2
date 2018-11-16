@@ -23,10 +23,10 @@ function getMyIp()
 
 $myIp = getMyIp();
 
-?><div class="py-4" style="margin-bottom: 150px;">
+?><div class="py-4 container" style="margin-bottom: 150px;">
 <h1>Validera Ip adresser</h1>
 <form class="form-inline w-100" method="post" action="<?= url("validate/update") ?>">
-  <div class="form-group w-100">
+  <div class="form-group container img-fluid">
     <label class="sr-only" for="ip">ip address:</label>
     <input type="ip" class="form-control w-100" name="ip" id="ip" value="<?= $myIp ?>">
   </div><br>

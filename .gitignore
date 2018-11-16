@@ -4,3 +4,4 @@
 memory::
 composer.lock
 /src/IpValidator/key.txt
+/src/Weather/key.txt
