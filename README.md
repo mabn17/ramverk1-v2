@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mabn17/ramverk1-v2.svg?branch=master)](https://travis-ci.org/mabn17/ramverk1-v2)
+
 # Ramverk1
 
 Repo for the course Ramverk1 @ [BTH](https://www.bth.se/eng/), dbwebb
