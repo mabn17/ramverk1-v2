@@ -36,6 +36,7 @@ class WeatherController implements ContainerInjectableInterface
         $page = $this->di->get("page");
         $apiRes = ($session->has('apiRes')) ? $session->get("apiRes") : "";
         $weather = $this->di->get("weather");
+        $test = $session->get('test');
         $page->add(
             "anax/v2/weather/index",
             [
@@ -44,7 +45,7 @@ class WeatherController implements ContainerInjectableInterface
                 "weather" => $weather->hello(),
                 "apiRes" => $apiRes,
                 "search" => $session->get('search'),
-                "test" => $weather->multiCurl(),
+                "test" => $test,
             ]
         );
 
@@ -58,10 +59,12 @@ class WeatherController implements ContainerInjectableInterface
         $search = $this->di->get("request")->getPost('location');
         $location = $this->di->get("weather")->geocode($search);
         $jsonData = $this->model->getData($location);
+        $test = $this->model->multiCurl(2, $search);
         
         $this->di->get("session")->set('jsonData', $jsonData);
         $this->di->get("session")->set('locationData', $location);
         $this->di->get("session")->set('search', $search);
+        $this->di->get("session")->set('test', $test);
 
         return $this->di->get("response")->redirect("vader");
     }

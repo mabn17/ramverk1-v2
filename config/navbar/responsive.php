@@ -77,6 +77,20 @@ return [
             "text" => "Väder Koll",
             "url" => "vader",
             "title" => "Väder applikation",
+            "submenu" => [
+                "items" => [
+                    [
+                        "text" => "Väder med Form",
+                        "url" => "vader",
+                        "title" => "Väder applikation",
+                    ],
+                    [
+                        "text" => "Väder med Json",
+                        "url" => "v-json",
+                        "title" => "Väder applikation",
+                    ],
+                ],
+            ],
         ],
     ],
 ];

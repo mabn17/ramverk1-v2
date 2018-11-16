@@ -9,5 +9,10 @@ return [
             "mount" => "vader",
             "handler" => "\Anax\Controller\WeatherController",
         ],
+        [
+            "info" => "Väder applikation",
+            "mount" => "v-json",
+            "handler" => "\Anax\Controller\WeatherJsonController",
+        ],
     ]
 ];

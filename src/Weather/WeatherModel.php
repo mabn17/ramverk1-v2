@@ -19,6 +19,10 @@ class WeatherModel
 {
     public function getData(array $coords) : array
     {
+        if (!isset($coords[0]['lat']) || !isset($coords[0]['lon'])) {
+            return [];
+        }
+
         $filename = __DIR__ . "/key.txt";
         $accessKey = file($filename)[0];
         $location = $coords[0]['lat'] . ',' . $coords[0]['lon'];
@@ -36,7 +40,7 @@ class WeatherModel
         return [$apiRes];
     }
 
-    public function getDate($nrOfDays) : string
+    public function getDate($nrOfDays)
     {
         $timestamp = mktime(date('H-i-s-n-j-Y'));
 
@@ -81,12 +85,20 @@ class WeatherModel
     }
 
     // Works wonders
-    public function multiCurl()
+    public function multiCurl($nrOfDays, $adrs)
     {
+        $coords = $this->geocode($adrs);
+        if (!isset($coords[0]['lat']) || !isset($coords[0]['lon'])) {
+            return [[]];
+        }
+        $filename = __DIR__ . "/key.txt";
+        $accessKey = file($filename)[0];
+        $location = $coords[0]['lat'] . ',' . $coords[0]['lon'];
         $urls = [];
 
-        for ($i = 0; $i < 5; $i++) { 
-            $urls[] = 'http://httpbin.org/get?i=' . $i;
+        for ($i = 0; $i < $nrOfDays; $i++) { 
+            $time = $this->getDate("$i");
+            $urls[] = 'https://api.darksky.net/forecast/'.$accessKey.'/'.$location.','.$time.'?exclude=minutely,hourly,currently,alerts,flags&extend=daily&lang=sv&units=auto';
         }
 
         $multi = curl_multi_init();

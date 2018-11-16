@@ -32,7 +32,7 @@ echo "</pre>";
 <?php if ($jsonData !== null && $locationData !== null) { ?>
     <?php if (sizeof($locationData) !== 0) { ?>
 <link rel="stylesheet" href="../view/anax/v2/ip/leaflet.css">
-  <h2>Platsinformation för <?= $search ?></h2>
+  <h2 class="text-center">Platsinformation för <?= $search ?></h2>
 <div class="table-responsive">
 <table class="table table-bordered">
   <thead>
@@ -94,9 +94,21 @@ echo "</pre>";
     <?php endforeach; ?>
 </div>
 <h1 class="text-center">Väder för de senaste 30 dagarna</h1>
-  <pre>
-    <?php print_r($jsonData) ?>
-  </pre>
+<div class="row d-flex">
+    <?php foreach ($test as $days) : $avgTemp = (round($day["temperatureHigh"]) + round($day["temperatureLow"])) / 2; $day = $days["daily"]["data"][0] ?>
+      <div class="col col-md-4 hvr" title="<?= $day["summary"] ?>">
+        <div class="card p-4 mb-4">
+          <h2 class="h4 text-center"><?= date('d M', $day["time"]) ?></h2>
+          <h3 class="display-4 h3 text-center"><?= $avgTemp ?>&deg;</h3>
+          <div class="d-flex justify-content-around">
+            <p class="lead">H <?= round($day["temperatureHigh"]) ?>&deg;</p>
+            <p class="lead">L <?= round($day["temperatureLow"]) ?>&deg;</p>
+          </div>
+          <p class="lead m-0">Luftfuktighet <?= $day["humidity"]*100 ?>%</p>
+        </div>
+      </div>
+    <?php endforeach; ?>
+</div>
     <?php } else { ?>
         <h1>Ingen träff</h1>
         <p>Kunde inte hitta platsen: "<?= $search ?>"</p>
