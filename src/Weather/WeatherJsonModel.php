@@ -62,7 +62,6 @@ class WeatherJsonModel
     public function getPrevDays(string $pos, $days) : array
     {
         $wModel = new WeatherModel;
-        $location = $wModel->geocode($pos);
         $res = $wModel->multiCurl($days, $pos);
         $lastRes = [];
 

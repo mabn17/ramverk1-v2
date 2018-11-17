@@ -59,12 +59,6 @@ class WeatherJsonController implements ContainerInjectableInterface
     {
         $request = $this->di->get("request");
         $days = $request->getGet('days') ?? "30";
-
-        $res = [
-            "pos" => $pos,
-            "days" => $days,
-        ];
-
         $apiRes = $this->model->getAllData($pos, $days);
 
         return [$apiRes];

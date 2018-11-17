@@ -52,7 +52,6 @@ class WeatherModel
      */
     public function getDate($nrOfDays) : string
     {
-        $timestamp = date('H-i-s-n-j-Y');
         $myDate = new \Datetime();
         $myDate->sub(new \DateInterval('P'. (intval($nrOfDays) + 1) .'D'));
         return $myDate->format('U');
