@@ -10,11 +10,7 @@ use Anax\Commons\ContainerInjectableTrait;
 // use Anax\Route\Exception\InternalErrorException;
 
 /**
- * A sample controller to show how a controller class can be implemented.
- * The controller will be injected with $di if implementing the interface
- * ContainerInjectableInterface, like this sample class does.
- * The controller is mounted on a particular route and can then handle all
- * requests for that mount point.
+ * A controller that handles the IP Json responses
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
@@ -22,16 +18,20 @@ class IpJsonController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+    /**
+     * Init method for /v-json route
+     * 
+     * @return void
+     */
     public function initialize()
     {
         $this->model = new \Anax\IpValidator\JsonValidatorModel;
     }
 
     /**
-     * This is the index method action, it handles:
-     * ANY METHOD mountpoint
-     * ANY METHOD mountpoint/
-     * ANY METHOD mountpoint/index
+     * This is the index method action
+     * 
+     * @return object the index page
      */
     public function indexAction()
     {
@@ -56,6 +56,8 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Small sample of how to use get /look
+     * 
+     * @return array information about the api
      */
     public function lookAction() : array
     {
@@ -68,6 +70,8 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Displays a JSON formated aswer for kmom01 (GET) /check
+     * 
+     * @return array a message in json format about the given ip
      */
     public function checkActionGet() : array
     {
@@ -83,6 +87,8 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Displays a JSON formated aswer for kmom01 (POST) /check
+     * 
+     * @return array same as checkActionGet but for post
      */
     public function checkActionPost() : array
     {
@@ -98,6 +104,8 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Displays a JSON formated aswer for kmom02 (GET) /map
+     * 
+     * @return array extended information about the given ip adress
      */
     public function mapActionGet() : array
     {
@@ -111,6 +119,8 @@ class IpJsonController implements ContainerInjectableInterface
     /**
      * Displays a JSON formated aswer for kmom02 (POST) /map
      * Also hande one question from the test route (TODO: move this check)
+     * 
+     * @return array extended information about the given ip adress
      */
     public function mapActionPost() : array
     {

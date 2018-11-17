@@ -55,11 +55,68 @@ $myIp = getMyIp();
 
     <h2>API</h2>
     <h3>Användning</h3>
-    Optionella parametrar läggs till som en <a href="https://en.wikipedia.org/wiki/Query_string">query</a> efter <small><i><code>[position]</code>, ex. <code>/v-json/karlskrona?days=2</code></i></small>
+    Optionella parametrar läggs till som en <a href="https://en.wikipedia.org/wiki/Query_string">query</a> efter <small><i><code>[position]</code>, ex. <code>karlskrona?days=2</code></i></small>
     <h4>GET</h4>
-    <pre class="hljs text-left"><span class="hljs-keyword">GET</span> /v-json/[position]<br><b>GET</b> /v-json/karlskrona</pre>
+    <pre class="hljs text-left"><span class="hljs-keyword">GET</span> /v-json/forecast/[position]<br><b>GET</b> /v-json/forecast/karlskrona</pre>
     <i>Resultat</i>
-    <pre class="hljs text-left">{
-    "message": "127.0.0.1 is a valid IPv4 adress."
-}</pre>
+    <pre class="hljs text-left">[
+    current: [
+        latitude: 56.1621073,
+        longitude: 15.5866422,
+        timezone: "Europe/Stockholm",
+        daily: [
+            summary: "Ingen mätbar nederbörd u…ill 5°C under onsdagen.",
+            icon: "clear-day",
+            0: [
+                time: 1542409200,
+                summary: "Molnigt under dagen.",
+                icon: "partly-cloudy-day",
+                sunriseTime: 1542436832,
+                sunsetTime: 1542466053,
+                moonPhase: 0.31,
+                precipIntensity: 0,
+                precipIntensityMax: 0.0025,
+                precipIntensityMaxTime: 1542423600,
+                precipProbability: 0,
+                temperatureHigh: 5.44,
+                temperatureHighTime: 1542434400,
+                temperatureLow: 2.93,
+                temperatureLowTime: 1542492000,
+                apparentTemperatureHigh: 5.44,
+                apparentTemperatureHighTime: 1542434400,
+                apparentTemperatureLow: -0.22,
+                apparentTemperatureLowTime: 1542495600,
+                dewPoint: 3.03,
+                humidity: 0.87,
+                pressure: 1040.8,
+                windSpeed: 1.16,
+                windGust: 5.56,
+                windGustTime: 1542492000
+                windBearing: 295,
+                cloudCover: 0.74,
+                uvIndex: 0,
+                uvIndexTime: 1542409200,
+                visibility: 14.4,
+                ozone: 280.04,
+                temperatureMin: 2.93,
+                temperatureMinTime: 1542492000,
+                temperatureMax: 6.44,
+                temperatureMaxTime: 1542409200,
+                apparentTemperatureMin: -0.19,
+                apparentTemperatureMinTime: 1542492000,
+                apparentTemperatureMax: 5.44,
+                apparentTemperatureMaxTime: 1542430800
+            ],
+            ...
+            7: [
+                <span class="hljs-comment">Samma värden som 0: []</span>
+            ]
+        ],
+        offset: 1
+    ],
+    previous: [
+        <span class="hljs-comment">Samma som current["daily"]</span>
+        <span class="hljs-comment">Denna arrayen kommer inte att synas om days = 0</span>
+    ]
+]</pre>
 </div>

@@ -22,16 +22,20 @@ class IpController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+    /**
+     * Init method for /v-json route
+     * 
+     * @return void
+     */
     public function initialize()
     {
         $this->model = new \Anax\IpValidator\ValidateModel;
     }
 
     /**
-     * This is the index method action, it handles:
-     * ANY METHOD mountpoint
-     * ANY METHOD mountpoint/
-     * ANY METHOD mountpoint/index
+     * This is the index method action.
+     * 
+     * @return object the index page.
      */
     public function indexAction()
     {
@@ -59,7 +63,7 @@ class IpController implements ContainerInjectableInterface
      * Displays a view that shows the response for kmom01 and kmom02
      * /update (TODO: change (BAD route name))
      *
-     * @return string
+     * @return object the index page
      */
     public function updateActionPost() : object
     {

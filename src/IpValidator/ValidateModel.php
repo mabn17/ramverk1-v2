@@ -12,9 +12,9 @@ class ValidateModel
     /**
      * IpValidator for kmom01
      *
-     * @param string $ipA       The ip adress
+     * @param string $ipA The ip adress
      *
-     * @return string $res      If the adress is valid and its type.
+     * @return array  If the adress is valid and its type.
      */
     public function validateKmomOne(string $ipA)
     {
@@ -38,9 +38,9 @@ class ValidateModel
     /**
      * IpValidator for kmom02
      *
-     * @param string $ipA       The ip adress
+     * @param string $ipA The ip adress
      *
-     * @return array $res       Information about the ip adress
+     * @return array $res Information about the ip adress
      */
     public function validateKmomTwo(string $ipA) : array
     {
@@ -63,9 +63,9 @@ class ValidateModel
     /**
      * Curls http://api.ipstack.com with the given ip adress
      *
-     * @param string $ipA       The ip adress
+     * @param string $ipA The ip adress
      *
-     * @return array            Information about the ip adress
+     * @return array Information about the ip adress
      */
     public function getJson(string $ipA) : array
     {
@@ -82,9 +82,9 @@ class ValidateModel
     /**
      * Gives a response that the ip adress is IPv6
      *
-     * @param string $ipA       ip adress
+     * @param string $ipA The ip adress
      *
-     * @return string           is valid and type IPv6
+     * @return string is valid and type IPv6
      */
     public function getIpVSixKmomOne(string $ipA) : string
     {
@@ -94,9 +94,9 @@ class ValidateModel
     /**
      * Generates a responce for IPv6 kmom02
      *
-     * @param string $ipA       the ip adress
+     * @param string $ipA The ip adress
      *
-     * @return array            information about the ip adress
+     * @return array  information about the ip adress
      */
     public function getIpVSixKmomTwo(string $ipA) : array
     {
@@ -113,9 +113,9 @@ class ValidateModel
     /**
      * Gives a response that the ip adress is IPv6
      *
-     * @param string $ipA       ip adress
+     * @param string $ipA The ip adress
      *
-     * @return string           is valid and type IPv6
+     * @return string  is valid and type IPv6
      */
     public function getIpVFourKmomOne(string $ipA) : string
     {
@@ -125,9 +125,9 @@ class ValidateModel
     /**
      * Generates a responce for OPv4 kmom02
      *
-     * @param string $ipA       the ip adress
+     * @param string $ipA The ip adress
      *
-     * @return array            information about the ip adress
+     * @return array information about the ip adress
      */
     public function getIpVFourKmomTwo(string $ipA) : array
     {
@@ -140,6 +140,15 @@ class ValidateModel
         ];
     }
 
+    /**
+     * Checks the post values (Mainly for a test route)
+     * 
+     * @param string|bool $kmomOne submit value
+     * @param string|bool $kmomTwo submit value
+     * @param string $ipA The ip adress
+     * 
+     * @return array|string with the response
+     */
     public function checkPost($kmomOne, $kmomTwo, $ipA) : array
     {
         if ($kmomTwo !== null) {
@@ -149,7 +158,7 @@ class ValidateModel
         }
 
         return [
-            "ipB" => "wtf",
+            "ipB" => "",
             "apiRes" => "",
         ];
     }

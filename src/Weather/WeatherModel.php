@@ -7,16 +7,19 @@ namespace Anax\Weather;
 // use Anax\Route\Exception\InternalErrorException;
 
 /**
- * A sample controller to show how a controller class can be implemented.
- * The controller will be injected with $di if implementing the interface
- * ContainerInjectableInterface, like this sample class does.
- * The controller is mounted on a particular route and can then handle all
- * requests for that mount point.
+ * Model class witch main responsability is handeling data for /vader
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class WeatherModel
 {
+    /**
+     * Gets the weekly weather.
+     * 
+     * @param array $coords contains the values longitude and latitude.
+     * 
+     * @return array with the weekly weather data.
+     */
     public function getData(array $coords) : array
     {
         if (!isset($coords[0]['lat']) || !isset($coords[0]['lon'])) {
@@ -40,34 +43,28 @@ class WeatherModel
         return [$apiRes];
     }
 
-    public function getDate($nrOfDays)
+    /**
+     * Gets todays date and subtract the number of days sent in
+     * 
+     * @param string|int $nrOfDays the number of days
+     * 
+     * @return string the date in unix format
+     */
+    public function getDate($nrOfDays) : string
     {
-        $timestamp = mktime(date('H-i-s-n-j-Y'));
-
+        $timestamp = date('H-i-s-n-j-Y');
         $myDate = new \Datetime();
-        $myDate->setTimestamp($timestamp);
-
         $myDate->sub(new \DateInterval('P'. (intval($nrOfDays) + 1) .'D'));
         return $myDate->format('U');
     }
 
-    // WORKS 
-    // NOTE: only returns one day per request -> original is current + 7 days
-    // -> REMEMBER: make the original + 22 sub requests.. 
-    /* public function test(string $location) : array
-    {
-        $filename = __DIR__ . "/key.txt";
-        $accessKey = file($filename)[0];
-        $time = $this->getDate(10); // ','.$time.
-        $chA = curl_init('https://api.darksky.net/forecast/'.$accessKey.'/'.$location.','.$time.'?exclude=minutely,hourly,currently,alerts,flags&extend=daily&lang=sv&units=auto');
-        curl_setopt($chA, CURLOPT_RETURNTRANSFER, true);
-        $json = curl_exec($chA);
-        curl_close($chA);
-
-        $apiRes = json_decode($json, true);
-        return [$apiRes];
-    } */
-
+    /**
+     * Takes a location and turns it into coordinates.
+     * 
+     * @param string $adrs the location, can be anything like Zip, adress and so on
+     * 
+     * @return array with longitude and latitude values NOTE: will be empty if nothing is found
+     */
     public function geocode(string $adrs) : array
     {
         $city = urlencode($adrs);
@@ -84,8 +81,15 @@ class WeatherModel
         return $apiRes;
     }
 
-    // Works wonders
-    public function multiCurl($nrOfDays, $adrs)
+    /**
+     * Preforms a multi curl to get the previus weather
+     * 
+     * @param string|int    $nrOfDays amount of previus days
+     * @param string        $adrs the position
+     * 
+     * @return array with all the weather details for each day
+     */
+    public function multiCurl($nrOfDays, string $adrs) : array
     {
         $coords = $this->geocode($adrs);
         if (!isset($coords[0]['lat']) || !isset($coords[0]['lon'])) {
@@ -141,7 +145,12 @@ class WeatherModel
         return $htmls;
     }
 
-    // Ignore (Just for testing $di)
+    /**
+     * Method to test dipendency injection
+     * Might aswell be ignored
+     * 
+     * @return string the title for a view
+     */
     public function hello() : string
     {
         return 'TEST - (Taget från $di)';

@@ -10,11 +10,7 @@ use Anax\Commons\ContainerInjectableTrait;
 // use Anax\Route\Exception\InternalErrorException;
 
 /**
- * A sample controller to show how a controller class can be implemented.
- * The controller will be injected with $di if implementing the interface
- * ContainerInjectableInterface, like this sample class does.
- * The controller is mounted on a particular route and can then handle all
- * requests for that mount point.
+ * A controller for the Weather route.
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
@@ -22,6 +18,11 @@ class WeatherController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+    /**
+     * Init method for /v-json route
+     * 
+     * @return void
+     */
     public function initialize()
     {
         $this->model = new \Anax\Weather\WeatherModel;
@@ -29,6 +30,8 @@ class WeatherController implements ContainerInjectableInterface
 
     /**
      * Front page for the weather application
+     * 
+     * @return object the index page
      */
     public function indexAction()
     {
@@ -54,6 +57,12 @@ class WeatherController implements ContainerInjectableInterface
         ]);
     }
 
+    /**
+     * Handles and parses Post data then redirect the user back to the routes
+     * index page.
+     * 
+     * @return object redirect to the routes index.
+     */
     public function locationActionPost()
     {
         $search = $this->di->get("request")->getPost('location');
