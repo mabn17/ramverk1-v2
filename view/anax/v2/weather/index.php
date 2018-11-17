@@ -13,9 +13,6 @@ $sLocation = "";
 if ($search !== null) {
     $sLocation = $search;
 }
-echo "<pre>";
-print_r($test);
-echo "</pre>";
 ?><div class="container justify-content-center pb-2">
     <h1 class="text-center"><?= $weather ?></h1>
     <form class="form" method="post" action="<?= url("vader/location") ?>">

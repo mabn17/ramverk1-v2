@@ -127,8 +127,8 @@ class IpJsonController implements ContainerInjectableInterface
         $request = $this->di->get("request");
         $ipA = $request->getPost('ip') ?? "";
         $kmomOne = $request->getPost('kmom01') ?? null;
-        $apiRes = [];
-        $json = [];
+        /* $apiRes = [];
+        $json = []; */
 
         // Only for test route (Will change it soon)
         if ($kmomOne !== null) {

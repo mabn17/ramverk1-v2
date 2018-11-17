@@ -66,7 +66,7 @@ class Navbar
      *
      * @param array $config with configuration for the menu.
      *
-     * @return string with html for the menu.
+     * @return string|bool|array with html for the menu.
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -112,9 +112,9 @@ class Navbar
                 }
 
                 // Check if the current menuitem is selected
-                if (!isset($item["url"])) {
+                /* if (!isset($item["url"])) {
                     var_dump($item);
-                }
+                } */
                 $selected = $this->check($item["url"])
                     ? "selected "
                     : null;
