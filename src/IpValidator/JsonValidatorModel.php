@@ -41,7 +41,7 @@ class JsonValidatorModel
      */
     public function validateKmomTwo(string $ipA) : array
     {
-        $res = [];
+        /* $res = []; */
         $res = ["error" => "$ipA is not a valid ip adress"];
 
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {

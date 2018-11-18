@@ -23,6 +23,11 @@ class IpController implements ContainerInjectableInterface
     use ContainerInjectableTrait;
 
     /**
+     * @var class $model initializes to the main model class
+     */
+    public $model;
+
+    /**
      * Init method for /v-json route
      * 
      * @return void
