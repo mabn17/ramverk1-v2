@@ -26,6 +26,7 @@ $myIp = getMyIp();
 ?><div class="py-4" style="margin-bottom: 150px;">
     <h1>Dokumentation</h1>
     <p>Detta är en en webbtjänst som hämtar väderprognosen för ett specifikt område, dag för dag. Använd REST API:fär att hämta historisk och kommande väderdata.</p></p>
+    <p>All information hämtas från <a href="https://www.openstreetmap.org/">Openstreetmap</a> och <a href="https://darksky.net">Darksky.</a></p>
     <h2 class="">Prova</h2>
     <div class="row d-flex">
         <div class="col">

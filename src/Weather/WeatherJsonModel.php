@@ -25,7 +25,7 @@ class WeatherJsonModel
     {
         $position = urlencode($pos);
         if ($pos == "") {
-            return ["message" => "Could not find any data from \"$pos\""];
+            return ["message" => "Could not find any data from $pos"];
         } elseif ($days == 0) {
             return $this->getCurrentOnly($position);
         }
@@ -82,8 +82,8 @@ class WeatherJsonModel
      */
     public function getAll(string $position, $days)
     {
-        $res = [];
-        $res["current"] = $this->getCurrentOnly($position);
+        /* $res = []; */
+        $res["current"] = $this->getCurrentOnly($position)["current"];
         $res["previous"] = $this->getPrevDays($position, $days);
 
         return [$res];

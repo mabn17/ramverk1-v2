@@ -70,7 +70,7 @@ class WeatherController implements ContainerInjectableInterface
      */
     public function locationActionPost()
     {
-        $search = $this->di->get("request")->getPost('location');
+        $search = $this->di->get("request")->getPost('location') ?? "";
         $location = $this->di->get("weather")->geocode($search);
         $jsonData = $this->model->getData($location);
         $test = $this->model->multiCurl(2, $search);

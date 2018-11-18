@@ -102,7 +102,7 @@ class IpJsonControllerTest extends TestCase
         $this->assertEquals("array", gettype($res));
     }
 
-    /* public function testSubModel()
+    public function testSubModel()
     {
         $model = new \Anax\IpValidator\JsonValidatorModel;
         $adrs = "127.0.0.1";
@@ -123,5 +123,5 @@ class IpJsonControllerTest extends TestCase
 
         $jsTwo = $model->validateKmomTwo($adrs);
         $this->assertEquals(gettype($jsTwo), "array");
-    } */
+    }
 }

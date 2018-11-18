@@ -90,13 +90,11 @@ class WeatherModel
      */
     public function multiCurl($nrOfDays, string $adrs) : array
     {
-        $coords = $this->geocode($adrs);
-        if ($coords == []) {
+        $urls = $this->getUrls($nrOfDays, $adrs);
+        /* var_dump($urls); */
+        if ($urls == [[]] || $urls == []) {
             return [[]];
         }
-
-        $location = $coords[0]['lat'] . ',' . $coords[0]['lon'];
-        $urls = $this->getUrls($nrOfDays, $location);
 
         $multi = curl_multi_init();
         $handles = [];
@@ -149,13 +147,26 @@ class WeatherModel
     /**
      * Returns a list of urls
      *
-     * @param string|int $nrOfDays the total amount of days
+     * @param string|int $nrOfDays the total amount of days (MAX 30)
+     * @param string $adrs the given adress/location
      *
      * @return array a list of urls to curl
      */
-    private function getUrls($nrOfDays, string $location) : array
+    private function getUrls($nrOfDays, string $adrs) : array
     {
+        $coords = $this->geocode($adrs);
+        $nrOfDays = ($nrOfDays > 30) ? 30 : $nrOfDays;
+        /* echo "$nrOfDays";
+        echo "$adrs";
+        var_dump($coords); */
+        if ($coords == []) {
+            return [[]];
+        }
+
+        $urls = [];
         $accessKey = $this->getKey();
+        $location = $coords[0]['lat'] . ',' . $coords[0]['lon'];
+
         for ($i = 0; $i < $nrOfDays; $i++) {
             $time = $this->getDate("$i");
             $urls[] = 'https://api.darksky.net/forecast/'.$accessKey.'/'.$location.','.$time.'?exclude=minutely,hourly,currently,alerts,flags&extend=daily&lang=sv&units=auto';
@@ -171,6 +182,6 @@ class WeatherModel
      */
     public function hello() : string
     {
-        return 'TEST - (Taget från $di)';
+        return 'Väder app (Test - Taget från $di->get("weather"))';
     }
 }
