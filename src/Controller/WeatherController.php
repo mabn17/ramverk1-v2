@@ -19,7 +19,7 @@ class WeatherController implements ContainerInjectableInterface
     use ContainerInjectableTrait;
 
     /**
-     * @var class $model initializes to the main model class
+     * @var object $model initializes to the main model class
      */
     public $model;
 
