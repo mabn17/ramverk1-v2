@@ -18,15 +18,13 @@ class ValidateModel
      */
     public function validateKmomOne(string $ipA)
     {
-        $res = "";
+        $res = "<span class='text-danger'> $ipA is not a valid IP.</span>";
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {
             if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
                 $res = $this->getIpVSixKmomOne($ipA);
             } else {
                 $res = $this->getIpVFourKmomOne($ipA);
             }
-        } else {
-            $res = "<span class='text-danger'> $ipA is not a valid IP.</span>";
         }
 
         return [
@@ -44,18 +42,17 @@ class ValidateModel
      */
     public function validateKmomTwo(string $ipA) : array
     {
-        $res = [];
+        $res = [
+            "apiRes" => null,
+            "ipB" => "<span class='text-danger'> $ipA is not a valid IP.</span>"
+        ];
+
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {
             if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
                 $res = $this->getIpVSixKmomTwo($ipA);
             } else {
                 $res = $this->getIpVFourKmomTwo($ipA);
             }
-        } else {
-            $res = [
-                "apiRes" => null,
-                "ipB" => "<span class='text-danger'> $ipA is not a valid IP.</span>"
-            ];
         }
         return $res;
     }
@@ -101,7 +98,6 @@ class ValidateModel
     public function getIpVSixKmomTwo(string $ipA) : array
     {
         $ipB = "<span class='text-success'> $ipA is a valid IPv6 adress.</span>";
-
         $apiRes = $this->getJson($ipA);
 
         return [
