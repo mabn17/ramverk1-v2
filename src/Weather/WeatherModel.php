@@ -91,7 +91,7 @@ class WeatherModel
     public function multiCurl($nrOfDays, string $adrs) : array
     {
         $coords = $this->geocode($adrs);
-        if (!$this->checkCoords()) {
+        if ($coords == []) {
             return [[]];
         }
 
@@ -126,7 +126,6 @@ class WeatherModel
         foreach ($handles as $channel) {
             $html = curl_multi_getcontent($channel);
             $htmls[] = json_decode($html, true);
-            //var_dump($html);
             curl_multi_remove_handle($multi, $channel);
         }
 
@@ -145,18 +144,6 @@ class WeatherModel
         $accessKey = file($filename)[0];
 
         return $accessKey;
-    }
-
-    /**
-     * Checks if the coordinates are valid
-     *
-     * @param string|array $coords the position
-     *
-     * @return boolean true / false
-     */
-    private function checkCoords($coords) : boolean
-    {
-        return (isset($coords["lat"]) && isset($coords["lon"]));
     }
 
     /**
