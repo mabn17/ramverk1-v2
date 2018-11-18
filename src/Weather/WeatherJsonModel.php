@@ -82,7 +82,7 @@ class WeatherJsonModel
      */
     public function getAll(string $position, $days)
     {
-        /* $res = []; */
+        $res = [];
         $res["current"] = $this->getCurrentOnly($position)["current"];
         $res["previous"] = $this->getPrevDays($position, $days);
 

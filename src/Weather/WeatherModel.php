@@ -91,7 +91,7 @@ class WeatherModel
     public function multiCurl($nrOfDays, string $adrs) : array
     {
         $urls = $this->getUrls($nrOfDays, $adrs);
-        /* var_dump($urls); */
+
         if ($urls == [[]] || $urls == []) {
             return [[]];
         }
@@ -156,9 +156,7 @@ class WeatherModel
     {
         $coords = $this->geocode($adrs);
         $nrOfDays = ($nrOfDays > 30) ? 30 : $nrOfDays;
-        /* echo "$nrOfDays";
-        echo "$adrs";
-        var_dump($coords); */
+
         if ($coords == []) {
             return [[]];
         }
