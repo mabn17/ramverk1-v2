@@ -138,11 +138,11 @@ class ValidateModel
 
     /**
      * Checks the post values (Mainly for a test route)
-     * 
+     *
      * @param string|bool|null $kmomOne submit value
      * @param string|bool|null $kmomTwo submit value
      * @param string $ipA The ip adress
-     * 
+     *
      * @return array|string with the response
      */
     public function checkPost($kmomOne, $kmomTwo, $ipA) : array

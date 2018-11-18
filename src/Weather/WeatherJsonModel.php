@@ -15,10 +15,10 @@ class WeatherJsonModel
 {
     /**
      * Used by controller returns different values dippending on the given data.
-     * 
+     *
      * @param string $pos the given location like a ZIP or adress and so on.
      * @param string|int $days the number of previus days
-     * 
+     *
      * @return array with the weather data.
      */
     public function getAllData(string $pos, $days) : array
@@ -35,9 +35,9 @@ class WeatherJsonModel
 
     /**
      * Only returns the weekly data.
-     * 
+     *
      * @param string $pos the wanted position like a ZIP, adress and so on.
-     * 
+     *
      * @return array the weekly weather data.
      */
     public function getCurrentOnly(string $pos) : array
@@ -53,10 +53,10 @@ class WeatherJsonModel
 
     /**
      * Gets the weather data from previus days.
-     * 
+     *
      * @param string $pos the wanted position like a ZIP, adress and so on.
      * @param string|int $days the number of previus days
-     * 
+     *
      * @return array the weather data for the days.
      */
     public function getPrevDays(string $pos, $days) : array
@@ -74,10 +74,10 @@ class WeatherJsonModel
 
     /**
      * Combines both this->getCurrentOnly and this->getPrevDays.
-     * 
+     *
      * @param string $position the wanted position like a ZIP, adress and so on.
      * @param string|int $days the number of previus days.
-     * 
+     *
      * @return array with the combined data.
      */
     public function getAll(string $position, $days)

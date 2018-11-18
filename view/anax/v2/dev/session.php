@@ -13,12 +13,11 @@ $mount = $mount ?? null; // Where are the routes mounted
 $session = $di->get("session");
 
 
-
+/* <pre><?= var_dump($session) ?></pre> */
 ?><h1>Session</h1>
 
 <p>The session contains the following data.</p>
 
-<pre><?= var_dump($session) ?></pre>
 
 <p>
     <a href="<?= url($mount."session/increment") ?>">Add to session and increment<a> |

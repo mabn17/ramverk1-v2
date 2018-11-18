@@ -15,14 +15,13 @@ $number = $session->get("number", 0);
 $session->set("number", ++$number);
 
 
-
+/* <pre><?= var_dump($session) ?></pre> */
 ?><h1>Session increment</h1>
 
 <p>Reload this page to increment the key 'number' in the session.</p>
 
 <p>The current value is: <?= $session->get("number") ?></p>
 
-<pre><?= var_dump($session) ?></pre>
 
 <p>
     <a href="<?= url($mount."session") ?>">Back to session<a>

@@ -29,7 +29,7 @@ class IpController implements ContainerInjectableInterface
 
     /**
      * Init method for /v-json route
-     * 
+     *
      * @return void
      */
     public function initialize()
@@ -39,7 +39,7 @@ class IpController implements ContainerInjectableInterface
 
     /**
      * This is the index method action.
-     * 
+     *
      * @return object the index page.
      */
     public function indexAction()

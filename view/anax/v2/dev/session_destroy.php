@@ -13,12 +13,12 @@ $mount = $mount ?? null; // Where are the routes mounted
 $session = $di->get("session");
 $session->destroy();
 
+/* <pre><?= var_dump($session) ?></pre> */
 
 ?><h1>Session destroyed</h1>
 
 <p>The session is now destroyed.</p>
 
-<pre><?= var_dump($session) ?></pre>
 
 <p>
     <a href="<?= url($mount."session") ?>">Back to session<a>

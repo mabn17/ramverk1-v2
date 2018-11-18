@@ -24,7 +24,7 @@ class FlatFileContentController implements ContainerInjectableInterface
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function catchAll(...$args)
+    public function catchAll(/* ...$args */)
     {
         // Get the current route and see if it matches a content/file
         $path = $this->di->get("request")->getRoute();

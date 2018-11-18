@@ -25,7 +25,7 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Init method for /v-json route
-     * 
+     *
      * @return void
      */
     public function initialize()
@@ -35,7 +35,7 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * This is the index method action
-     * 
+     *
      * @return object the index page
      */
     public function indexAction()
@@ -61,7 +61,7 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Small sample of how to use get /look
-     * 
+     *
      * @return array information about the api
      */
     public function lookAction() : array
@@ -75,7 +75,7 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Displays a JSON formated aswer for kmom01 (GET) /check
-     * 
+     *
      * @return array a message in json format about the given ip
      */
     public function checkActionGet() : array
@@ -92,7 +92,7 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Displays a JSON formated aswer for kmom01 (POST) /check
-     * 
+     *
      * @return array same as checkActionGet but for post
      */
     public function checkActionPost() : array
@@ -109,7 +109,7 @@ class IpJsonController implements ContainerInjectableInterface
 
     /**
      * Displays a JSON formated aswer for kmom02 (GET) /map
-     * 
+     *
      * @return array extended information about the given ip adress
      */
     public function mapActionGet() : array
@@ -124,7 +124,7 @@ class IpJsonController implements ContainerInjectableInterface
     /**
      * Displays a JSON formated aswer for kmom02 (POST) /map
      * Also hande one question from the test route (TODO: move this check)
-     * 
+     *
      * @return array extended information about the given ip adress
      */
     public function mapActionPost() : array

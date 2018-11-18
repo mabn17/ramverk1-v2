@@ -25,7 +25,7 @@ class WeatherJsonController implements ContainerInjectableInterface
 
     /**
      * Init method for /v-json route
-     * 
+     *
      * @return void
      */
     public function initialize()
@@ -35,7 +35,7 @@ class WeatherJsonController implements ContainerInjectableInterface
 
     /**
      * Front page for the weather application
-     * 
+     *
      * @return object index page
      */
     public function indexAction()
@@ -55,9 +55,9 @@ class WeatherJsonController implements ContainerInjectableInterface
 
     /**
      * Returns a Json response with the weather data.
-     * 
+     *
      * @param string $pos forecase/[pos], can be zip, adress and so on.
-     * 
+     *
      * @return array with the weather data.
      */
     public function forecastActionGet(string $pos = "") : array

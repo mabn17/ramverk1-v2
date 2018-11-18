@@ -25,7 +25,7 @@ class WeatherController implements ContainerInjectableInterface
 
     /**
      * Init method for /v-json route
-     * 
+     *
      * @return void
      */
     public function initialize()
@@ -35,7 +35,7 @@ class WeatherController implements ContainerInjectableInterface
 
     /**
      * Front page for the weather application
-     * 
+     *
      * @return object the index page
      */
     public function indexAction()
@@ -65,7 +65,7 @@ class WeatherController implements ContainerInjectableInterface
     /**
      * Handles and parses Post data then redirect the user back to the routes
      * index page.
-     * 
+     *
      * @return object redirect to the routes index.
      */
     public function locationActionPost()

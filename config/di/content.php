@@ -16,7 +16,7 @@ return [
                 $cfg = $this->get("configuration");
                 $config = $cfg->load("content.php");
                 $config = $config["config"] ?? null;
-                $file = $config["file"] ?? null;
+                //$file = $config["file"] ?? null;
 
                 $content->configure($config);
 

@@ -14,8 +14,6 @@ class Navbar
 {
     use ContainerInjectableTrait;
 
-
-
     /**
      * Create an url.
      *
@@ -27,8 +25,6 @@ class Navbar
     {
         return $this->di->get("url")->create($url);
     }
-
-
 
     /**
      * Callback tracing the current selected menu item base on scriptname.
@@ -44,14 +40,12 @@ class Navbar
         }
     }
 
-
-
     /**
      * Create an url.
      *
      * @param: string $url where to create the url.
      *
-     * @return string as the url create.
+     * @return boolean as the url create.
      */
     public function isParent($parent)
     {
@@ -59,10 +53,9 @@ class Navbar
         return !substr_compare($parent, $route, 0, strlen($parent));
     }
 
-
-
     /**
-     * Create a navigation bar/menu, with submenus.
+     * Create a navigation bar/menu, with submenus.// Check if the current menuitem is selected
+     * if (!isset($item["url"])) { var_dump($item); }
      *
      * @param array $config with configuration for the menu.
      *
@@ -80,7 +73,6 @@ class Navbar
             "wrapper" => "nav",
         ];
         $menu = array_replace_recursive($default, $config);
-        //$menu = array_replace_recursive($menu, $menus[$menuName]);
 
         // Create the ul li menu from the array, use an anonomous recursive
         // function that returns an array of values.
@@ -91,7 +83,6 @@ class Navbar
         ) use (
             &$createMenu
         ) {
-
             $html = null;
             $hasItemIsSelected = false;
 
@@ -111,13 +102,7 @@ class Navbar
                     $subMenuClass = "rm-submenu";
                 }
 
-                // Check if the current menuitem is selected
-                /* if (!isset($item["url"])) {
-                    var_dump($item);
-                } */
-                $selected = $this->check($item["url"])
-                    ? "selected "
-                    : null;
+                $selected = $this->check($item["url"]) ? "selected " : null;
 
                 // Check if the menuitem is a parent of current page, /controller for /controller/action
                 $isParent = null;
@@ -138,7 +123,6 @@ class Navbar
                     : null;
 
                 // Add the menu item
-                // $url = $menu["create_url"]($item["url"]);
                 $url = $this->url($item["url"]);
                 $html .= "\n<li{$class}>{$subMenuButton}<a href='{$url}' title='{$item['title']}'>{$item['text']}</a>{$subMenu}</li>\n";
 
@@ -147,24 +131,15 @@ class Navbar
                     $hasItemIsSelected = true;
                 }
             }
-
             // Return the menu
             return array("\n<ul$ulId$ulClass>$html</ul>\n", $hasItemIsSelected);
         };
 
         // Call the anonomous function to create the menu, and submenues if any.
-        $id = isset($menu["id"])
-            ? " id=\"{$menu["id"]}\""
-            : null;
-        $class = isset($menu["class"])
-            ? " class=\"{$menu["class"]}\""
-            : null;
+        $id = isset($menu["id"]) ? " id=\"{$menu["id"]}\"" : null;
+        $class = isset($menu["class"]) ? " class=\"{$menu["class"]}\"" : null;
 
-        list($html) = $createMenu(
-            $menu["items"],
-            $id,
-            $class
-        );
+        list($html) = $createMenu($menu["items"], $id, $class);
 
         // Set the id & class element, only if it exists in the menu-array
         $wrapper = $menu["wrapper"];

@@ -76,7 +76,9 @@ if ($search !== null) {
 <h1 class="text-center">Veckans Prognos</h1>
 <p class="text-center"><?= $jsonData[0]["daily"]["summary"]?></p>
 <div class="row d-flex">
-    <?php foreach ($jsonData[0]["daily"]["data"] as $day) : $avgTemp = (round($day["temperatureHigh"]) + round($day["temperatureLow"])) / 2; ?>
+        <?php foreach ($jsonData[0]["daily"]["data"] as $day) :
+            $avgTemp = (round($day["temperatureHigh"]) + round($day["temperatureLow"])) / 2;
+            ?>
       <div class="col col-md-4 hvr" title="<?= $day["summary"] ?>">
         <div class="card p-4 mb-4">
           <h2 class="h4 text-center"><?= date('d M', $day["time"]) ?></h2>
@@ -88,11 +90,13 @@ if ($search !== null) {
           <p class="lead m-0">Luftfuktighet <?= $day["humidity"]*100 ?>%</p>
         </div>
       </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 </div>
 <h1 class="text-center">Väder för de senaste 30 dagarna</h1>
 <div class="row d-flex">
-    <?php foreach ($test as $days) : $avgTemp = (round($day["temperatureHigh"]) + round($day["temperatureLow"])) / 2; $day = $days["daily"]["data"][0] ?>
+        <?php foreach ($test as $days) :
+            $avgTemp = (round($day["temperatureHigh"]) + round($day["temperatureLow"])) / 2; $day = $days["daily"]["data"][0]
+            ?>
       <div class="col col-md-4 hvr" title="<?= $day["summary"] ?>">
         <div class="card p-4 mb-4">
           <h2 class="h4 text-center"><?= date('d M', $day["time"]) ?></h2>
@@ -104,7 +108,7 @@ if ($search !== null) {
           <p class="lead m-0">Luftfuktighet <?= $day["humidity"]*100 ?>%</p>
         </div>
       </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 </div>
     <?php } else { ?>
         <h1>Ingen träff</h1>
