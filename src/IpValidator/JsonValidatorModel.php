@@ -18,15 +18,13 @@ class JsonValidatorModel
      */
     public function validateKmomOne(string $ipA) : string
     {
-        $ipB = "";
+        $ipB = "$ipA is not a valid IP.";
         if (filter_var($ipA, FILTER_VALIDATE_IP)) {
             if (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
                 $ipB = "$ipA is a valid IPv6 adress.";
             } elseif (filter_var($ipA, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
                 $ipB = "$ipA is a valid IPv4 adress.";
             }
-        } else {
-            $ipB = "$ipA is not a valid IP.";
         }
 
         return $ipB;
