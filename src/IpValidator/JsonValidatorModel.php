@@ -18,7 +18,7 @@ class JsonValidatorModel
     {
         $prep = require ANAX_INSTALL_PATH . "/config/keys.php";
         // if the file dosent exist set it to an empty string.
-        $this->apiKey = $prep["ipKey"] ?? "";
+        $this->apiKey = $prep["ip"] ?? "";
     }
     /**
      * IpValidator for kmom01
