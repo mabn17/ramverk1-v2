@@ -13,6 +13,16 @@ namespace Anax\Weather;
  */
 class WeatherModel
 {
+    /**
+     * @var string $apiKey initializes the key
+     */
+    protected $apiKey;
+
+    /**
+     * Sets the api key.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $prep = require ANAX_INSTALL_PATH . "/config/keys.php";

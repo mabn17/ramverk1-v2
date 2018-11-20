@@ -10,6 +10,11 @@ namespace Anax\IpValidator;
 class JsonValidatorModel
 {
     /**
+     * @var string $apiKey initializes the key
+     */
+    protected $apiKey;
+
+    /**
      * Sets the api key.
      *
      * @return void
