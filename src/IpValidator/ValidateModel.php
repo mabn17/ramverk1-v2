@@ -9,10 +9,15 @@ namespace Anax\IpValidator;
  */
 class ValidateModel
 {
+    /**
+     * Sets the api key.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $prep = require ANAX_INSTALL_PATH . "/config/keys.php";
-        $this->apiKey = $prep["ipKey"];
+        $this->apiKey = $prep["ipKey"] ?? "";
     }
 
     /**

@@ -9,11 +9,16 @@ namespace Anax\IpValidator;
  */
 class JsonValidatorModel
 {
-
+    /**
+     * Sets the api key.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $prep = require ANAX_INSTALL_PATH . "/config/keys.php";
-        $this->apiKey = $prep["ipKey"];
+        // if the file dosent exist set it to an empty string.
+        $this->apiKey = $prep["ipKey"] ?? "";
     }
     /**
      * IpValidator for kmom01
@@ -63,8 +68,6 @@ class JsonValidatorModel
      */
     public function getJson(string $ipA) : array
     {
-        /* $filename = __DIR__ . "/key.txt";
-        $accessKey = file($filename)[0]; */
         $accessKey = $this->apiKey;
 
         $chA = curl_init('http://api.ipstack.com/'.$ipA.'?access_key='.$accessKey.'');
