@@ -6,8 +6,6 @@ composer.lock
 /theme/src/@fontawsome/*
 /theme/src/@desinax/*
 /theme/src/
-/src/IpValidator/key.txt
-/src/Weather/key.txt
 /view/anax/v2/ip/leaflet.js
 /view/anax/v2/ip/leaflet.css
 /config/keys.php
