@@ -30,7 +30,7 @@ class WeatherController implements ContainerInjectableInterface
      */
     public function initialize()
     {
-        $this->model = $this->di->get("weather");
+        $this->model = new \Anax\Weather\WeatherModel;
     }
 
     /**

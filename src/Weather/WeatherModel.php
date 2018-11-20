@@ -32,8 +32,8 @@ class WeatherModel
             return [];
         }
 
-        $filename = __DIR__ . "/key.txt";
-        $accessKey = file($filename)[0];
+        /* $filename = __DIR__ . "/key.txt"; */
+        $accessKey = $this->apiKey;
         $location = $coords[0]['lat'] . ',' . $coords[0]['lon'];
 
         $chA = curl_init(
@@ -144,10 +144,10 @@ class WeatherModel
      */
     private function getKey() : string
     {
-        $filename = __DIR__ . "/key.txt";
-        $accessKey = file($filename)[0];
+        /* $filename = __DIR__ . "/key.txt";
+        $accessKey = file($filename)[0]; */
 
-        return $accessKey;
+        return $this->apiKey;
     }
 
     /**

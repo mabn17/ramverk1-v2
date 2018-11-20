@@ -110,14 +110,24 @@ $myIp = getMyIp();
             ],
             ...
             7: [
-                <span class="hljs-comment">Samma värden som 0: []</span>
+                <span class="hljs-comment">Samma innehåll som ["daily"][0]</span>
             ]
         ],
         offset: 1
     ],
     previous: [
-        <span class="hljs-comment">Samma som current["daily"]</span>
-        <span class="hljs-comment">Denna arrayen kommer inte att synas om days = 0</span>
+        0: [
+            0: [
+                <span class="hljs-comment">Samma som current["daily"]</span>
+                <span class="hljs-comment">Denna arrayen kommer inte att synas om days = 0</span>
+            ]
+        ]
+        1: [
+            0: [
+                ....
+            ]
+        ]
+        ...
     ]
 ]</pre>
 </div>
