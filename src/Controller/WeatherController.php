@@ -30,7 +30,7 @@ class WeatherController implements ContainerInjectableInterface
      */
     public function initialize()
     {
-        $this->model = new \Anax\Weather\WeatherModel;
+        $this->model = $this->di->get("weather");
     }
 
     /**
@@ -73,7 +73,7 @@ class WeatherController implements ContainerInjectableInterface
         $search = $this->di->get("request")->getPost('location') ?? "";
         $location = $this->di->get("weather")->geocode($search);
         $jsonData = $this->model->getData($location);
-        $test = $this->model->multiCurl(3, $search);
+        $test = $this->model->multiCurl(30, $search);
         
         $this->di->get("session")->set('jsonData', $jsonData);
         $this->di->get("session")->set('locationData', $location);
