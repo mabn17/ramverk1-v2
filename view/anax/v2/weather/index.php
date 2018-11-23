@@ -15,7 +15,7 @@ if ($search !== null) {
 }
 ?><div class="container justify-content-center pb-2">
     <h1 class="text-center"><?= $weather ?></h1>
-    <form class="form" method="post" action="<?= url("vader/location") ?>">
+    <form class="form" method="post" action="<?= /** @scrutinizer ignore-call */ url("vader/location") ?>">
         <div class="form-group my-3">
             <label class="" for="location"><b>Sök på valfi Position som Adress, Land, Stad m.m</b> <small><i>ex. <u>"Valhallavägen 1 karlskrona", "Sverige eller Sweden", "ronneby"</u></i></small></label>
             <div class="d-flex">

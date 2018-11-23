@@ -42,7 +42,6 @@ class WeatherModel
             return [];
         }
 
-        /* $filename = __DIR__ . "/key.txt"; */
         $accessKey = $this->apiKey;
         $location = $coords[0]['lat'] . ',' . $coords[0]['lon'];
 
@@ -112,9 +111,12 @@ class WeatherModel
             return [[]];
         }
 
+        return $this->startMultiCurl($urls);
+    }
+
+    public function startMultiCurl(array $urls, array $handles = [], array $htmls = []) : array
+    {
         $multi = curl_multi_init();
-        $handles = [];
-        $htmls = [];
 
         foreach ($urls as $url) {
             $ch = curl_init($url);
@@ -154,9 +156,6 @@ class WeatherModel
      */
     private function getKey() : string
     {
-        /* $filename = __DIR__ . "/key.txt";
-        $accessKey = file($filename)[0]; */
-
         return $this->apiKey;
     }
 

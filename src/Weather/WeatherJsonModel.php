@@ -86,10 +86,6 @@ class WeatherJsonModel
         $res["current"] = $this->getCurrentOnly($position)["current"];
         $res["previous"] = $this->getPrevDays($position, $days);
 
-        foreach ($res["previous"] as $value) {
-            # code...
-        }
-
         return [
             "current" => $res["current"],
             "previous" => $res["previous"]
