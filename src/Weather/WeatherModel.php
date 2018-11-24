@@ -111,12 +111,8 @@ class WeatherModel
             return [[]];
         }
 
-        return $this->startMultiCurl($urls);
-    }
-
-    public function startMultiCurl(array $urls, array $handles = [], array $htmls = []) : array
-    {
         $multi = curl_multi_init();
+        $handles = [];
 
         foreach ($urls as $url) {
             $ch = curl_init($url);
@@ -127,6 +123,21 @@ class WeatherModel
             $handles[$url] = $ch;
         }
 
+        $this->startMultiCurl($multi);
+
+        foreach ($handles as $channel) {
+            $html = curl_multi_getcontent($channel);
+            $htmls[] = json_decode($html, true);
+            curl_multi_remove_handle($multi, $channel);
+        }
+
+        curl_multi_close($multi);
+
+        return $htmls;
+    }
+
+    public function startMultiCurl($multi)
+    {
         do {
             $mrc = curl_multi_exec($multi, $active);
         } while ($mrc == CURLM_CALL_MULTI_PERFORM);
@@ -139,14 +150,6 @@ class WeatherModel
                 $mrc = curl_multi_exec($multi, $active);
             } while ($mrc == CURLM_CALL_MULTI_PERFORM);
         }
-        foreach ($handles as $channel) {
-            $html = curl_multi_getcontent($channel);
-            $htmls[] = json_decode($html, true);
-            curl_multi_remove_handle($multi, $channel);
-        }
-
-        curl_multi_close($multi);
-        return $htmls;
     }
 
     /**
