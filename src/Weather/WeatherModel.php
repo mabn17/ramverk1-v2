@@ -113,6 +113,7 @@ class WeatherModel
 
         $multi = curl_multi_init();
         $handles = [];
+        $htmls = [];
 
         foreach ($urls as $url) {
             $ch = curl_init($url);
@@ -136,6 +137,9 @@ class WeatherModel
         return $htmls;
     }
 
+    /**
+     * Continueation for $this->multiCurl
+     */
     public function startMultiCurl($multi)
     {
         do {
