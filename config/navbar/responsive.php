@@ -107,5 +107,10 @@ return [
                 ],
             ],
         ],
+        [
+            "text" => "Bok exmpl",
+            "url" => "book",
+            "title" => "Book Example",
+        ],
     ],
 ];
